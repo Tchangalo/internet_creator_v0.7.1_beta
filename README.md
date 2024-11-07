@@ -51,7 +51,7 @@ Nicht zusammen mit Dark Reader verwenden!
 
 ## Neue Features und spezielle Probleme der Version 0.7.1_beta
 
-Statt auf einem Development-Server läuft die Web App auf einem professionellen Gunicorn Server. Obwohl das Frontend größtenteils unauffällig läuft, gibt es im Backend regelmäßig Fehlermeldungen, die bislang nicht abgestellt werden konnten. Zu Einzelheiten siehe 'Spezielle Probleme der Version 0.7.1_beta.txt'. 
+Statt auf einem Development-Server läuft die Web App auf einem professionellen Gunicorn Server. Obwohl das Frontend größtenteils unauffällig läuft, gibt es im Backend regelmäßig Fehlermeldungen, die bislang nicht abgestellt werden konnten. Zu Einzelheiten siehe 'Spezielle Probleme der Version 0.7.1_beta.pdf'. 
 
 
 ## Troubleshooting
