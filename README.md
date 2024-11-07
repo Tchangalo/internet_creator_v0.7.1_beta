@@ -1,7 +1,7 @@
 ## Verwendungszwecke:
 
-Es geht hier darum, drei Netzwerke (ISP's) bestehend aus jeweils 9 Vyos-Routern automatisiert unter PVE aufzusetzen und mit Ansible zu konfigurieren. Der Network Creator steuert eine abgewandelte Version von [aibix0001 (Gerd's) provider.sh](https://github.com/aibix0001/aasil), die darauf ausgelegt ist, sich bzgl. der Arbeitsgeschwindigkeit an die Gegebenheiten verschieden starker CPU's anzupassen: So gibt es einen Turbomodus für Rechner mit besonders starken CPU's, einen Normalmodus für schwächere CPU's und einen seriellen Modus für besonders schwache CPU's. Um den passenden Modus für die jeweils verwendete CPU zu finden, siehe den Abschnitt 'Erfahrungswerte' im Readme.pdf.
-Im Readme.pdf wird außerdem beschrieben, wie der Network Creator auf Rechnern mit nur 16 GB RAM verwendet werden kann, sowie eine Menge weiterer Informationen zu seiner Arbeitsweise und Bedienung. Das [Aibix-Projekt](https://www.twitch.tv/aibix0001) wendet sich u.a. an Auszubildende und Studenten im IT-Bereich, sowie weitere Interessierte, die nicht unbedingt immer drei Kraftpakete zur Verfügung haben. Der Internet Creator ist deshalb insbesondere auch zur Verwendung mit schwächeren Rechnern entwickelt worden.
+Es geht hier darum, drei Netzwerke (ISP's) bestehend aus jeweils 9 Vyos-Routern automatisiert unter PVE aufzusetzen und mit Ansible zu konfigurieren. Der Internet Creator steuert eine abgewandelte Version von [aibix0001 (Gerd's) provider.sh](https://github.com/aibix0001/aasil), die darauf ausgelegt ist, sich bzgl. der Arbeitsgeschwindigkeit an die Gegebenheiten verschieden starker CPU's anzupassen: So gibt es einen Turbomodus für Rechner mit besonders starken CPU's, einen Normalmodus für schwächere CPU's und einen seriellen Modus für besonders schwache CPU's. Um den passenden Modus für die jeweils verwendete CPU zu finden, siehe den Abschnitt 'Erfahrungswerte' im Readme.pdf.
+Im Readme.pdf wird außerdem beschrieben, wie der Internet Creator auf Rechnern mit nur 16 GB RAM verwendet werden kann, sowie eine Menge weiterer Informationen zu seiner Arbeitsweise und Bedienung. Das [Aibix-Projekt](https://www.twitch.tv/aibix0001) wendet sich u.a. an Auszubildende und Studenten im IT-Bereich, sowie weitere Interessierte, die nicht unbedingt immer drei Kraftpakete zur Verfügung haben. Der Internet Creator ist deshalb insbesondere auch zur Verwendung mit schwächeren Rechnern entwickelt worden.
 
 
 ## Neueinsteiger
@@ -51,34 +51,7 @@ Nicht zusammen mit Dark Reader verwenden!
 
 ## Neue Features und spezielle Probleme der Version 0.7.1_beta
 
-Statt auf einem Development-Server läuft die Web App auf einem professionellen Gunicorn Server. Obwohl sämtliche Skripte korrekt ausgeführt werden - das System also vollständig funktional zu sein scheint - gibt es im Backend regelmäßig folgende Fehlermeldungen, die Verbindungsabbrüche anzeigen:
-
-9 RLock(s) were not greened, to fix this error make sure you run eventlet.monkey_patch() before importing any other
-modules.
-
-server=192.168.10.14:32100//socket.io/ client=192.168.10.3:44112 socket shutdown error: [Errno 9] Bad file descriptorClient disconnected
-
-Invalid session yZzWpCc_PuZOH4_QAAAA (further occurrences of this error will be logged with level INFO)
-
-Die Fehlermeldungen treten auf, obwohl der Standartfix dafür angewendet wurde, nämlich
-
-import eventlet
-
-eventlet.monkey_patch()
-
-ganz an den Anfang des inc.py Skripts zu setzen und den Startbefehl:
-
-gunicorn --worker-class eventlet -w 1 -b 0.0.0.0:32100 app:app
-
-zu
-
-EVENTLET_HUB=poll gunicorn --worker-class eventlet -w 2 -b 0.0.0.0:32100 --timeout 120 --graceful-timeout 30 app:app
-
-zu erweitern. Auch andere Versuche, wie eventlet durch gevent zu ersetzen oder den proxy.py Sever als Reverse Proxy zwischenzuschalten, haben die Fehlermeldungen nicht beseitigt. 
-
-Achtung: Sobald man 'pip install gunicorn eventlet' in der .venv ausgeführt hat, wird der Ping Test und die Ausgabe der Router Infos unter Version 0.7 nicht mehr funktionieren. Man braucht dann vorher:
-
-pip uninstall gunicorn eventlet
+Statt auf einem Development-Server läuft die Web App auf einem professionellen Gunicorn Server. Obwohl das Frontend größtenteils unauffällig läuft, gibt es im Backend regelmäßig Fehlermeldungen, die bislang nicht abgestellt werden konnten. Zu Details siehe 'Spezielle Probleme der Version 0.7.1_beta.txt'. 
 
 
 ## Troubleshooting
