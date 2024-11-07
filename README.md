@@ -49,7 +49,7 @@ Nötigenfalls sudo-Password des Users im Terminal eingeben.
 Nicht zusammen mit Dark Reader verwenden!
 
 
-## Neue Features und spezielle Probleme in Version 0.7.1_beta
+## Neue Features und spezielle Probleme der Version 0.7.1_beta
 
 Statt auf einem Development-Server läuft die Web App auf einem professionellen Gunicorn Server. Obwohl sämtliche Skripte korrekt ausgeführt werden - das System also vollständig funktional zu sein scheint, gibt es im Backend regelmäßig folgende Fehlermeldungen, die Verbindungsabbrüche anzeigen:
 
