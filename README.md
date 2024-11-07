@@ -74,7 +74,7 @@ zu
 
 EVENTLET_HUB=poll gunicorn --worker-class eventlet -w 2 -b 0.0.0.0:32100 --timeout 120 --graceful-timeout 30 app:app
 
-zu erweitern. Auch andere Versuche, wie eventlet durch gevent zu ersetzen oder den proxy.py Sever als Reverse Proxy zwischenzuschalten haben die Fehlermeldungen nicht beseitigt. 
+zu erweitern. Auch andere Versuche, wie eventlet durch gevent zu ersetzen oder den proxy.py Sever als Reverse Proxy zwischenzuschalten, haben die Fehlermeldungen nicht beseitigt. 
 
 Achtung: Sobald man 'pip install gunicorn eventlet' in der .venv ausgeführt hat, wird der Ping Test und die Ausgabe der Router Infos unter Version 0.7 nicht mehr funktionieren. Man braucht dann vorher:
 
