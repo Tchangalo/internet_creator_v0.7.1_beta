@@ -20,6 +20,21 @@ header h1 {
   margin: 0;
 }
 
+/* Logo */
+.logo-container {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 97px; /* Größe ändern */
+  height: auto;
+  z-index: 10; /* Logo ganz oben */
+}
+
+.logo-container img {
+  width: 100%;
+  height: auto;
+}
+
 /* Navigation */
 nav ul {
   list-style-type: none;
