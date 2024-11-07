@@ -13,30 +13,38 @@ ssh_output5=$(ssh -o ConnectTimeout=5 "$rid" "ip -br addr show" 2>&1)
 ssh_output6=$(ssh -o ConnectTimeout=5 "$rid" "ip -br link show" 2>&1)
 ssh_output7=$(ssh -o ConnectTimeout=5 "$rid" "ip vrf show" 2>&1)
 
-echo "Configuration of $rid:"
+echo
+echo "CONFIGURATION of $rid:"
+echo
 echo "$ssh_output1"
 echo "------------------------------------------------------------------------------------------------------------------------"
 
-echo "Routing Table of $rid:"
+echo "ROUTING TABLE of $rid:"
+echo
 echo "$ssh_output2"
 echo "------------------------------------------------------------------------------------------------------------------------"
 
-echo "Routing Rules of $rid:"
+echo "ROUTING RULES of $rid:"
+echo
 echo "$ssh_output3"
 echo "------------------------------------------------------------------------------------------------------------------------"
 
-echo "ARP Table of $rid:"
+echo "ARP TABLE of $rid:"
+echo
 echo "$ssh_output4"
 echo "------------------------------------------------------------------------------------------------------------------------"
 
 echo "IPs of $rid:"
+echo
 echo "$ssh_output5"
 echo "------------------------------------------------------------------------------------------------------------------------"
 
-echo "Interfaces of $rid:"
+echo "INTERFACES of $rid:"
+echo
 echo "$ssh_output6"
 echo "------------------------------------------------------------------------------------------------------------------------"
 
 echo "VRF of $rid:"
+echo
 echo "$ssh_output7"
 echo "------------------------------------------------------------------------------------------------------------------------"
