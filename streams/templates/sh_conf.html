@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Show Configuration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+    <script src="{{ url_for('static', filename='js/socket.io.min.js') }}"></script>
+  </head>
+  <body>
+    
+    <header>
+      <h1>Internet Creator v0.7.1_beta</h1>
+    </header>
+
+    <div class="logo-container">
+      <img src="{{ url_for('static', filename='style/logo.svg') }}" alt="Logo">
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('index') }}">Topology</a></li>
+        <li><a href="{{ url_for('creator') }}">Creator</a></li>
+        <li><a href="{{ url_for('general') }}">General</a></li>
+        <li><a href="{{ url_for('ping_test') }}">Ping Test</a></li>
+        <li><a href="{{ url_for('sh_conf') }}">Router Infos</a></li>
+      </ul>
+    </nav>
+    
+    <h2 class="site-titel">Router Informations</h2>
+    
+    <div class="wrapper2">
+    <main>
+      <form method="post" class="form-container-out">
+          <label for="Provider">Provider:</label>
+          <input type="text" name="Provider" value="{{ config.get('Provider', '') }}"><br>
+          
+          <label for="Router">Router:</label>
+          <input type="text" name="Router" value="{{ config.get('Router', '') }}"><br>
+
+          <button type="submit">Show Infos</button>
+      </form>
+    </main>
+    
+    <section id="field">
+      <h3 style="word-spacing: 20px;">Configuration Routes Rules ARP IPs Interfaces VRF</h3>
+      <pre id="output"></pre>
+    </section>
+
+    <script type="text/javascript">
+      const socket = io.connect();
+
+      socket.on('sh_conf_output', function(msg) {
+        // Neue Zeile zur Ausgabe hinzufügen
+        const outputElement = document.getElementById('output');
+        outputElement.innerText += msg.data + '\n';
+
+        // Automatisch nach unten scrollen
+        outputElement.scrollTop = outputElement.scrollHeight;
+      });
+    </script>
+    </div>
+
+    <footer>
+      <p></p>
+    </footer>
+  </body>
+</html> 
