@@ -53,7 +53,7 @@ Nicht zusammen mit Dark Reader verwenden!
 
 Statt auf einem Development-Server läuft die Web App auf einem professionellen Gunicorn Server. Obwohl das Frontend größtenteils unauffällig läuft, gibt es im Backend regelmäßig Fehlermeldungen, die bislang nicht abgestellt werden konnten. Zu Einzelheiten siehe 'Spezielle Probleme der Version 0.7.1_beta.pdf'. 
 
-Achtung: Sobald man 'pip install gunicorn eventlet' in der .venv ausgeführt hat, wird der Ping Test und die Ausgabe der Router Infos unter Version 0.7 nicht mehr funktionieren. Man braucht dann vorher:
+Achtung: Sobald man 'pip install gunicorn eventlet' in der .venv ausgeführt hat, wird der Ping Test und die Ausgabe der Router Infos unter Version 0.7 in dieser .venv nicht mehr funktionieren. Man braucht dann vorher:
 
 pip uninstall gunicorn eventlet
 
