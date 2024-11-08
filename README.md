@@ -28,7 +28,7 @@ Der Internet Creator wird folgendermaßen aufgerufen:
 
 (2) für alle, deren User nicht user heißt: Am besten das Skript useradd.sh (als root) laufen lassen. Das spart eine Menge Arbeit (vgl. Readme_either.pdf Anmerkung (7)). Ansonsten im create-vm-vyos_XYfs.sh und im create-vm-vyos-turbo_XYfs.sh Zeile 43 anpassen. Außerdem sind die SSH-Credentials in der Datei user-data beim Erstellen der seed.iso anzupassen, sowie die ansible.cfg. 
 
-(3) eine seed.iso erstellen (siehe Setup.pdf) und unter /var/lib/vz/template/iso ablegen.
+(3) eine seed.iso erstellen (siehe Setup.pdf) und unter /var/lib/vz/template/iso/ bzw. /var/lib/local-btrfs/template/iso/ ablegen.
 
 Und dann eingeben:
 
